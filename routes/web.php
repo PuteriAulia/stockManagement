@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\KasirController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\SuplierController;
 use App\Http\Controllers\BarangMasukController;
@@ -20,6 +22,12 @@ use App\Http\Controllers\BarangReturController;
 Route::get('/', function () {
     return view('dashboard');
 }); 
+
+// Auth
+Route::get('/register', [AuthController::class, 'formRegister']);
+Route::post('/register-proses', [AuthController::class, 'register']);
+Route::get('/login', [AuthController::class, 'formLogin'])->name('login');
+Route::post('/login-proses', [AuthController::class, 'login']);
 
 // Barang
 Route::get('/barang', [BarangController::class, 'index']);
@@ -52,4 +60,11 @@ Route::get('/suplier-edit/{id}', [SuplierController::class, 'formEdit']);
 Route::put('/suplier/{id}', [SuplierController::class, 'edit']);
 Route::get('/suplier-hapus/{id}', [SuplierController::class, 'konfirmHapus']);
 Route::delete('/suplier-hapus/{id}', [SuplierController::class, 'hapus']);
+
+//Kasir
+Route::get('/kasir', [KasirController::class, 'index']);
+Route::post('/kasir-tambah-cart', [KasirController::class, 'tambahCart']);
+Route::delete('/kasir-hapus-cart/{id}', [KasirController::class, 'hapus']);
+Route::post('/kasir-pembayaran', [KasirController::class, 'pembayaran']);
+Route::post('/kasir-simpan', [KasirController::class, 'simpan']);
 

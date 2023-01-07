@@ -126,6 +126,12 @@
                          <span class="nav-main-link-name">Suplier</span>
                      </a>
                  </li>
+                 <li class="nav-main-item">
+                    <a class="nav-main-link" href="/kasir">
+                        <i class="nav-main-link-icon si si-people"></i>
+                        <span class="nav-main-link-name">Kasir</span>
+                    </a>
+                </li>
              </ul>
          </div>
          <!-- END Side Navigation -->

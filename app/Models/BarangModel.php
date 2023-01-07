@@ -16,7 +16,7 @@ class BarangModel extends Model
 
     public function suplier(){
         return $this->belongsTo(SuplierModel::class, 'suplier_id', 'suplier_id');
-    }
+    } 
 
     public function barangMasuk(){
         return $this->belongsTo(BarangMasukModel::class, 'barang_id', 'barang_id');

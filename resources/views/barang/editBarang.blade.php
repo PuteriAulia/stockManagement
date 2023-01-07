@@ -61,7 +61,7 @@
                             @foreach ($suplierPilihan as $data)
                                 <option value="{{ $data->suplier_id }}">{{ $data->suplier_nama }}</option>
                             @endforeach
-                        </select>
+                        </select> 
                     </div>
                 </div>
             </div>
