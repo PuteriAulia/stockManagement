@@ -41,6 +41,7 @@
                             <th class="text-center" style="width: 15%;">Harga Beli</th>
                             <th class="text-center" style="width: 15%;">Harga Jual</th>
                             <th class="text-center" style="width: 15%;">Stok</th>
+                            <th class="text-center" style="width: 15%;">Suplier</th>
                             <th class="text-center" style="width: 100px;">Aksi</th>
                         </tr>
                     </thead>
@@ -60,6 +61,9 @@
                             </td>
                             <td class="">
                                 <p>{{ $data->barang_stok }}</p>
+                            </td>
+                            <td class="">
+                                <p>{{ $data->suplier->suplier_nama }}</p>
                             </td>
                             <td class="text-center">
                                 <div class="btn-group">

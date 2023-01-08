@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 class BarangController extends Controller
 {
     public function index(){
-        $barang = BarangModel::all();
+        $barang = BarangModel::where('barang_status', '=', 'aktif')->get();
         return view('barang.dataBarang', ['barang'=>$barang]);
     }
 
     public function formTambah(){
-        $suplier = SuplierModel::all();
+        $suplier = SuplierModel::where('suplier_status', '=', 'aktif')->get();
         return view('barang.tambahBarang', ['suplier'=>$suplier]);
     }
 
@@ -26,6 +26,7 @@ class BarangController extends Controller
         $dbBarang->barang_harga_jual = $request->harga_jual;
         $dbBarang->barang_stok = 0;
         $dbBarang->suplier_id = $request->suplier;
+        $dbBarang->barang_status = 'aktif';
         $dbBarang->save();
 
         return redirect('/barang');
@@ -33,7 +34,10 @@ class BarangController extends Controller
 
     public function formEdit($id){
         $barang = BarangModel::find($id);
-        $suplierPilihan = SuplierModel::where('suplier_id', '!=', $barang->suplier_id)->get(['suplier_nama', 'suplier_id']);
+        $suplierPilihan = SuplierModel::where([
+            ['suplier_id', '!=', $barang->suplier_id],
+            ['suplier_status', '=', 'aktif']
+        ])->get(['suplier_nama', 'suplier_id']);
         return view('barang.editBarang', ['barang'=>$barang, 'suplierPilihan'=>$suplierPilihan]);
     }
 
@@ -56,7 +60,8 @@ class BarangController extends Controller
 
     public function hapus($id){
         $barang = BarangModel::find($id);
-        $barang->delete();
+        $barang->barang_status = 'non-aktif';
+        $barang->save();
         return redirect('/barang');
     }
 }

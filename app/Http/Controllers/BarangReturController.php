@@ -14,7 +14,10 @@ class BarangReturController extends Controller
     }
 
     public function formTambah(){
-        $barang = BarangModel::all();
+        $barang = BarangModel::where([
+            ['barang_status', '=', 'aktif'],
+            ['barang_stok', '>', 0]
+        ])->get();
         return view('barang_retur.tambahBarangRetur', ['barang'=>$barang]);
     }
 

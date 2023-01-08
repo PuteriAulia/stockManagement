@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class SuplierController extends Controller
 {
     public function index(){
-        $suplier = SuplierModel::all();
+        $suplier = SuplierModel::where('suplier_status', '=', 'aktif')->get();
         return view('suplier.dataSuplier', ['suplier'=>$suplier]);
     }
 
@@ -22,6 +22,7 @@ class SuplierController extends Controller
         $dbSuplier->suplier_nama = $request->nama;
         $dbSuplier->suplier_alamat = $request->alamat;
         $dbSuplier->suplier_telepon = $request->telepon;
+        $dbSuplier->suplier_status = 'aktif';
         $dbSuplier->save();
         return redirect('/suplier');
     }
@@ -48,7 +49,8 @@ class SuplierController extends Controller
 
     public function hapus($id){
         $suplier = SuplierModel::find($id);
-        $suplier->delete();
+        $suplier->suplier_status = 'non-aktif';
+        $suplier->save();
         return redirect('/suplier');
     }
 }

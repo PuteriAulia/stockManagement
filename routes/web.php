@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\SuplierController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\BarangMasukController;
 use App\Http\Controllers\BarangReturController;
 
@@ -19,9 +21,8 @@ use App\Http\Controllers\BarangReturController;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-}); 
+// Dashboard
+Route::get('/', [DashboardController::class, 'index']);
 
 // Auth
 Route::get('/register', [AuthController::class, 'formRegister']);
@@ -67,4 +68,3 @@ Route::post('/kasir-tambah-cart', [KasirController::class, 'tambahCart']);
 Route::delete('/kasir-hapus-cart/{id}', [KasirController::class, 'hapus']);
 Route::post('/kasir-pembayaran', [KasirController::class, 'pembayaran']);
 Route::post('/kasir-simpan', [KasirController::class, 'simpan']);
-

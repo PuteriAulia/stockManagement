@@ -128,7 +128,7 @@
                  </li>
                  <li class="nav-main-item">
                     <a class="nav-main-link" href="/kasir">
-                        <i class="nav-main-link-icon si si-people"></i>
+                        <i class="nav-main-link-icon si si-calculator"></i>
                         <span class="nav-main-link-name">Kasir</span>
                     </a>
                 </li>

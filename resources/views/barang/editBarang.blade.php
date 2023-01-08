@@ -62,7 +62,7 @@
                                 <option value="{{ $data->suplier_id }}">{{ $data->suplier_nama }}</option>
                             @endforeach
                         </select> 
-                    </div>
+                    </div> 
                 </div>
             </div>
         </div>
